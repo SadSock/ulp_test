@@ -38,7 +38,7 @@ int main() {
     dot_product += a[i] * b[i];
   }
 
-  printf("X86  %f\n", dot_product);
+  printf("CPU: %f %la\n", dot_product, dot_product);
 
   // 打印读取的值
   for (int i = 0; i < 4; i++) {
