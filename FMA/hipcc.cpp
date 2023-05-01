@@ -63,7 +63,7 @@ int main() {
     hipMemcpy(result, dev_result, N * sizeof(double), hipMemcpyDeviceToHost);
 
     // 计算点积并打印结果
-    printf("hip %f %la\n", result[0], result[0]);
+    printf("hip %0.100f %la\n", result[0], result[0]);
 
     // 打印读取的值
     for (int i = 0; i < 4; i++) {

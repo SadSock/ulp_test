@@ -10,6 +10,7 @@ __global__ void dot_product(double *a, double *b, double *result) {
     result[0] = 0.0f;
     for(int i = 0; i < 4; i++){
         result[0] += a[i] * b[i];
+        printf("%lx, %la\n", *(uint64_t*)&result[0], result[0]);
     }    
 }
 
@@ -19,7 +20,6 @@ int main() {
     double result[N] = {0.0f};
 
     FILE *fp;
-    uint64_t num;
 
     fp = fopen("input.txt", "r");
     if (fp == NULL) {
@@ -32,6 +32,7 @@ int main() {
           printf("Error reading file\n");
           return 1;
         }
+        printf("%la\n", a[i]);
     }
 
     for (int i = 0; i < 4; i++) {
@@ -39,6 +40,7 @@ int main() {
           printf("Error reading file\n");
           return 1;
         }
+        printf("%la\n", b[i]);
     }
 
     fclose(fp);
@@ -62,15 +64,8 @@ int main() {
     cudaMemcpy(result, dev_result, N * sizeof(double), cudaMemcpyDeviceToHost);
 
     // 计算点积并打印结果
-    printf("cuda %f\n", result[0]);
+    printf("cuda %0.100f %la\n", result[0], result[0]);
 
-    // 打印读取的值
-    for (int i = 0; i < 4; i++) {
-        printf("a[%d] = %la\n", i, a[i]);
-    }
-    for (int i = 0; i < 4; i++) {
-        printf("b[%d] = %la\n", i, b[i]);
-    }
     // 释放 GPU 内存
     cudaFree(dev_a);
     cudaFree(dev_b);

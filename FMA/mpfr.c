@@ -17,36 +17,35 @@ int main() {
     printf("Error opening file\n");
     return 1;
   }
-
-  printf("Error reading file\n");
+  
   for (int i = 0; i < N; i++) {
     if (fscanf(fp, "%la", &a[i]) != 1) {
-      mpfr_init2(ma[i], 256);
       printf("Error reading file\n");
       return 1;
     }
+    mpfr_init2(ma[i], 1024);
+    mpfr_set_d(ma[i], a[i], MPFR_RNDN);
   }
 
-  printf("Error reading file\n");
+  
   for (int i = 0; i < N; i++) {
     if (fscanf(fp, "%la", &b[i]) != 1) {
-      mpfr_init2(mb[i], 256);
       printf("Error reading file\n");
       return 1;
     }
+    mpfr_init2(mb[i], 1024);
+    mpfr_set_d(mb[i], b[i], MPFR_RNDN);
   }
-  printf("Error reading file\n");
-  mpfr_init2(dot_product, 256);
-  mpfr_set_d(dot_product, 0.0, MPFR_RNDN);
-  printf("1 Error reading file\n");
 
-  mpfr_mul(dot_product, ma[0], mb[0], MPFR_RNDN);
+  mpfr_init2(dot_product, 1024);
+  mpfr_set_d(dot_product, 0.0, MPFR_RNDN);
+
   for (int i = 0; i < N; i++) {
-    printf("2 Error reading file\n");
     mpfr_fma(dot_product, ma[i], mb[i], dot_product, MPFR_RNDN);
   }
 
-  printf("3 Error reading file\n");
-  mpfr_printf("The dot product is %.10RNf\n", dot_product);
-  return 0;
+  double ret_f64 = mpfr_get_d(dot_product, MPFR_RNDN);
+  mpfr_printf("mpfr = %.150RNf\n", dot_product);
+  printf("ret_f64 = %la\n", ret_f64);
+    return 0;
 }
