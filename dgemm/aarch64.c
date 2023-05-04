@@ -29,7 +29,7 @@ int main() {
     cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, n, m, k, 1.0, a, k, b, m, 0.0, c, m);
 
     // 将结果保存到文件中
-    fp = fopen("./result/riscv.bin", "wb");
+    fp = fopen("./result/aarch64.bin", "wb");
     fwrite(c, sizeof(double), n * m, fp);
     fclose(fp);
 

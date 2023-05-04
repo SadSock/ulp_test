@@ -9,8 +9,8 @@ amd_gpu: amd_gpu.cpp
 nvidia_gpu: nvidia_gpu.cu
 	nvcc nvidia_gpu.cu -lcublas -o nvidia_gpu -allow-unsupported-compiler
 
-riscv: riscv.c
-	gcc -O2 -Wall riscv.c -lblas -o riscv
+aarch64: aarch64.c
+	gcc -O2 -Wall aarch64.c -lblas -o aarch64
 
 ulp: ulp.c
 	gcc -O2 ulp.c -o ulp -lm
