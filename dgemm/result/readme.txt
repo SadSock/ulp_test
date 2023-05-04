@@ -1,4 +1,5 @@
-9700H                     openblas 0.3.23  macOS 13.3.1     Apple clang version 14.0.3
+9700H                     blas 0.3.23      macOS 13.3.1     Apple clang version 14.0.3  0.122054s
+9700H_openblas            openblas 0.3.23  macOS 13.3.1     Apple clang version 14.0.3  0.186592s
 Yitian710                 blas 3.9.0       ubuntu 20.04.06  gcc 9.4.0                   0.097814s
 Yitian710_openblas        openblas 0.3.8   ubuntu 20.04.06  gcc 9.4.0                   0.469796s
 13600K                    blas 3.10.0      ubuntu 22.04.02  gcc 11.3.0                  0.242256s

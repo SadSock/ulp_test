@@ -6,6 +6,9 @@ x86: x86.c
 x86_openblas: x86.c
 	gcc -O2 -Wall x86.c -lopenblas64 -o x86
 
+mac_x86_openblas:x86.c
+	gcc -O2 -Wall x86.c -I/usr/local/opt/openblas/include -L/usr/local/opt/openblas/lib -lopenblas -o x86
+
 amd_gpu: amd_gpu.cpp
 	hipcc -lrocblas amd_gpu.cpp -o amd_gpu
 
