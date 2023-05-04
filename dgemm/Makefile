@@ -15,6 +15,9 @@ nvidia_gpu: nvidia_gpu.cu
 aarch64: aarch64.c
 	gcc -O2 -Wall aarch64.c -lblas -o aarch64
 
+aarch64_openblas: aarch64.c
+	gcc -O2 -Wall aarch64.c -lopenblas -o aarch64_openblas
+	
 ulp: ulp.c
 	gcc -O2 ulp.c -o ulp -lm
 
