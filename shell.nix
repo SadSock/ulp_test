@@ -31,6 +31,7 @@
     rocblas
     blas
     blas.dev
+    openblas.dev
     python311
     python311Packages.pip
     python311Packages.virtualenv
@@ -40,8 +41,8 @@
   profile = ''
     export CUDA_PATH=${pkgs.cudatoolkit}
     # export LD_LIBRARY_PATH=${pkgs.linuxPackages.nvidia_x11}/lib
-    export EXTRA_LDFLAGS="-L/lib  -L${pkgs.rocblas}/lib -L${pkgs.blas.dev}/lib -L${pkgs.linuxPackages.nvidia_x11}/lib -L${pkgs.mpfr.dev}/lib -L${pkgs.gmp.dev}/lib"
-    export EXTRA_CCFLAGS="-I/usr/include -I${pkgs.rocblas}/include  -I${pkgs.blas.dev}/include -I${pkgs.mpfr.dev}/include -I${pkgs.gmp.dev}/include"
+    export EXTRA_LDFLAGS="-L/lib  -L${pkgs.rocblas}/lib  -L${pkgs.openblas.dev}/lib -L${pkgs.blas.dev}/lib -L${pkgs.linuxPackages.nvidia_x11}/lib -L${pkgs.mpfr.dev}/lib -L${pkgs.gmp.dev}/lib"
+    export EXTRA_CCFLAGS="-I/usr/include -I${pkgs.rocblas}/include -I${pkgs.openblas.dev}/include  -I${pkgs.blas.dev}/include -I${pkgs.mpfr.dev}/include -I${pkgs.gmp.dev}/include"
   '';
 }).env
 
