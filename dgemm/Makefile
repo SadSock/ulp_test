@@ -9,6 +9,12 @@ x86_openblas: x86.c
 mac_x86_openblas:x86.c
 	gcc -O2 -Wall x86.c -I/usr/local/opt/openblas/include -L/usr/local/opt/openblas/lib -lopenblas -o x86
 
+apple_silicon_openblas:aarch64.c
+	gcc -O2 aarch64.c -L/opt/homebrew/opt/openblas/lib -I/opt/homebrew/opt/openblas/include -lopenblas -o m1
+
+apple_silicon:aarch64.c
+	gcc -O2 aarch64.c -I/opt/homebrew/opt/openblas/include -lblas -o m1
+
 amd_gpu: amd_gpu.cpp
 	hipcc -lrocblas amd_gpu.cpp -o amd_gpu
 
